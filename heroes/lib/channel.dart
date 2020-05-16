@@ -24,14 +24,21 @@ Controller get entryPoint {
   final router = Router();
 
   router
-    .route("/heroes/[:id]")
-    .link(() => HeroesController(context));
+        .route('/mainUI/[:funcnum]')
+        .link(() => UIController())
+//        .linkFunction((request) async {
+//      return Response.ok({'data': '123'});
+//    });
+        .link(()=>succeedController())
 
-  router
-    .route("/example")
-    .linkFunction((request) async {
-      return new Response.ok({"key": "value"});
-  });
+
+ router
+  .route('userlogin')
+  .link(()=> userloginController(context));
+
+router
+  .route('managerlogin')
+  .link(()=> managerlogincheckController(context));
 
   return router;
 }
