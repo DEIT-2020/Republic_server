@@ -1,5 +1,8 @@
 import 'heroes.dart';
 import 'controller/heroes_controller.dart';
+import 'package:aqueduct/managed_auth.dart';
+import 'package:heroes/model/user.dart';
+import 'package:heroes/controller/register_controller.dart';
 
 /// This type initializes an application.
 ///
@@ -8,31 +11,50 @@ import 'controller/heroes_controller.dart';
 class HeroesChannel extends ApplicationChannel {
   ManagedContext context;
 
-  @override
-  Future prepare() async {
-    logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
+AuthServer authServer;
+ @override
+Future prepare() async {
+  logger.onRecord.listen(
+      (rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
 
-    final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
-    final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
-      "heroes_user", "password", "localhost", 5432, "heroes");
+  final config = HeroConfig(options.configurationFilePath);
+  final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
+  final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
+      config.database.username,
+      config.database.password,
+      config.database.host,
+      config.database.port,
+      config.database.databaseName);
 
-    context = ManagedContext(dataModel, persistentStore);
-  }
+  context = ManagedContext(dataModel, persistentStore);
+
+  final authStorage = ManagedAuthDelegate<User>(context);
+    authServer = AuthServer(authStorage);
+}
   
   @override
 Controller get entryPoint {
   final router = Router();
+   router
+    .route('/auth/token')
+    .link(() => AuthController(authServer));
 
-  router
+   router
     .route("/heroes/[:id]")
     .link(() => HeroesController(context));
 
-  router
-    .route("/example")
-    .linkFunction((request) async {
-      return new Response.ok({"key": "value"});
-  });
+   router
+      .route('/register')
+      .link(() => RegisterController(context, authServer));
 
   return router;
 }
+}
+
+
+
+class HeroConfig extends Configuration {
+  HeroConfig(String path): super.fromFile(File(path));
+
+  DatabaseConfiguration database;
 }
