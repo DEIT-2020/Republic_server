@@ -39,7 +39,14 @@ Controller get entryPoint {
     .route('/auth/token')
     .link(() => AuthController(authServer));
 
-<<<<<<< HEAD
+    router
+    .route('/heroes/[:id]')
+    .link(() => HeroesController(context));
+
+  router
+    .route('/register')
+    .link(() => RegisterController(context, authServer));
+
   router
         .route('/mainUI/[:funcnum]')
         .link(() => UIController())
@@ -56,15 +63,6 @@ Controller get entryPoint {
 router
   .route('managerlogin')
   .link(()=> managerlogincheckController(context));
-=======
-   router
-    .route("/heroes/[:id]")
-    .link(() => HeroesController(context));
-
-   router
-      .route('/register')
-      .link(() => RegisterController(context, authServer));
->>>>>>> JinYiXuan
 
   return router;
 }
