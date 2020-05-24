@@ -47,7 +47,7 @@ Controller get entryPoint {
     .route('/register')
     .link(() => RegisterController(context, authServer));
 
-  router
+  /*router
         .route('/mainUI/[:funcnum]')
         .link(() => UIController())
 //        .linkFunction((request) async {
@@ -62,7 +62,7 @@ Controller get entryPoint {
 
 router
   .route('managerlogin')
-  .link(()=> managerlogincheckController(context));
+  .link(()=> managerlogincheckController(context));*/
 
   return router;
 }
