@@ -57,11 +57,11 @@ Controller get entryPoint {
 
 
  router
-  .route('userlogin')
+  .route('/userlogin')
   .link(()=> userloginController(context));
 
 router
-  .route('managerlogin')
+  .route('/managerlogin')
   .link(()=> managerlogincheckController(context));*/
 
   return router;
