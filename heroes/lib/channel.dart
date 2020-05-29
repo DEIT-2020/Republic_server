@@ -2,7 +2,12 @@ import 'heroes.dart';
 import 'controller/heroes_controller.dart';
 import 'package:aqueduct/managed_auth.dart';
 import 'package:heroes/model/user.dart';
+import 'package:heroes/model/manager.dart';
+import 'package:heroes/model/question.dart';
 import 'package:heroes/controller/register_controller.dart';
+import 'package:heroes/controller/managerLogin_controller.dart';
+import 'package:heroes/controller/questionCheck_controller.dart';
+import 'package:heroes/controller/questionAdd_controller.dart';
 
 /// This type initializes an application.
 ///
@@ -44,8 +49,27 @@ Controller get entryPoint {
     .link(() => HeroesController(context));
 
    router
-      .route('/register')
-      .link(() => RegisterController(context, authServer));
+    .route('/register')
+    .link(() => RegisterController(context, authServer));
+
+      //login
+   router
+    .route("/login/manager")
+    .link(() => ManagerController(context));
+
+      //question
+   router
+    .route('/questionCheck')
+    .link(() => QuestionCheckController(context));
+
+    router
+    .route("/questionCheck/[:id]")
+    .link(() => QuestionCheckController(context));
+
+   router
+    .route('/questionAdd')
+    .link(() => QuestionAddController(context));
+
 
   return router;
 }
