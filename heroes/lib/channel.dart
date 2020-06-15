@@ -8,7 +8,9 @@ import 'package:heroes/controller/register_controller.dart';
 import 'package:heroes/controller/managerLogin_controller.dart';
 import 'package:heroes/controller/questionCheck_controller.dart';
 import 'package:heroes/controller/questionAdd_controller.dart';
-
+import 'package:heroes/controller/appuserLogin_controller.dart';
+import 'package:heroes/controller/mainInterface_percenter_controller.dart';
+import 'package:heroes/controller/mainInterface_controller.dart';
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
@@ -68,15 +70,53 @@ Controller get entryPoint {
 router
   .route('/managerlogin')
   .link(()=> managerlogincheckController(context));*/
+<<<<<<< HEAD
 
+=======
+=======
+   router
+    .route('/register')
+    .link(() => RegisterController(context, authServer));
+
+      //login
+   router
+    .route("/login/manager")
+    .link(() => ManagerController(context));
+
+      //question
+   router
+    .route('/questionCheck')
+    .link(() => QuestionCheckController(context));
+
+    router
+    .route("/questionCheck/[:id]")
+    .link(() => QuestionCheckController(context));
+
+   router
+    .route('/questionAdd')
+    .link(() => QuestionAddController(context));
+
+>>>>>>> JinYiXuan
+   router
+   .route("/login/appUser");
+   .link(()=> AppUserController(context));
+   router
+   .route("/appUserinfo/[:id]")
+   .link(()=> appuserinfoController(context));
+   router
+   .route("/home");
+   .link(()=> homeController(context));
+   router
+   .route("percenter/[:id]");
+   .link(()=> home_percenterController(context));
+>>>>>>> 23f6be9e5bf84e61256495606e08bb8d42c35701
   return router;
+  
 }
 }
-
 
 
 class HeroConfig extends Configuration {
   HeroConfig(String path): super.fromFile(File(path));
-
   DatabaseConfiguration database;
 }
