@@ -52,7 +52,7 @@ Controller get entryPoint {
     .route('/register')
     .link(() => RegisterController(context, authServer));
 
-      //login
+     //login
    router
     .route("/login/manager")
     .link(() => ManagerController(context));
@@ -69,7 +69,6 @@ Controller get entryPoint {
    router
     .route('/questionAdd')
     .link(() => QuestionAddController(context));
-
 
   return router;
 }

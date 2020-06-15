@@ -14,3 +14,4 @@ Dart_Packages.xml
 *.aqueduct.pid
 config.src.yaml
 config.yaml
+database.yaml

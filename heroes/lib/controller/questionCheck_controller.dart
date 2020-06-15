@@ -10,16 +10,16 @@ class QuestionCheckController extends ResourceController {
 //get
   @Operation.get()
   Future<Response> getTopQuestions() async {
-    return Response.ok("getTopQuestions");
+    return Response.ok("getQuestions");
   }
 
 @Operation.get('question_id')
-  Future<Response> getArticleById(@Bind.path('question_id') int id) async {
+  Future<Response> getQuestionById(@Bind.path('question_id') int id) async {
 //根据id查询一条数据
     final query = Query<Question>(context)..where((a) => a.question_id).equalTo(id);
-    final article = await query.fetchOne();
-    if (article != null) {
-      return Response.ok(Question);
+    final question = await query.fetchOne();
+    if (question != null) {
+      return Response.ok(question);
     } else {
       return Response.notFound();
     }
