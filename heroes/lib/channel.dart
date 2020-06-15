@@ -110,9 +110,7 @@ router
    router
    .route("percenter/[:id]");
    .link(()=> home_percenterController(context));
-   router
-   .route("/home/[:id]");
-   .link(()=> home_percenterController(context));
+
   return router;
   
 }
