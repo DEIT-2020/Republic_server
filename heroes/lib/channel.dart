@@ -110,9 +110,9 @@ router
    router
    .route("percenter/[:id]");
    .link(()=> home_percenterController(context));
->>>>>>> 23f6be9e5bf84e61256495606e08bb8d42c35701
-=======
->>>>>>> JinYiXuan
+   router
+   .route("/home/[:id]");
+   .link(()=> home_percenterController(context));
   return router;
   
 }
