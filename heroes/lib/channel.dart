@@ -78,7 +78,7 @@ router
     .route('/register')
     .link(() => RegisterController(context, authServer));
 
-      //login
+     //login
    router
     .route("/login/manager")
     .link(() => ManagerController(context));
@@ -96,6 +96,7 @@ router
     .route('/questionAdd')
     .link(() => QuestionAddController(context));
 
+<<<<<<< HEAD
 >>>>>>> JinYiXuan
    router
    .route("/login/appUser");
@@ -110,6 +111,8 @@ router
    .route("percenter/[:id]");
    .link(()=> home_percenterController(context));
 >>>>>>> 23f6be9e5bf84e61256495606e08bb8d42c35701
+=======
+>>>>>>> JinYiXuan
   return router;
   
 }
