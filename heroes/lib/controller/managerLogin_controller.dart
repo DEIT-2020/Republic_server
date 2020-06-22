@@ -8,7 +8,7 @@ class ManagerController extends ResourceController {
 
   final ManagedContext context;
 
-  @Operation.get('manager_id')
+  @Operation.get('managerId')
   Future<Response> getUser() async {
     return Response.ok("登陆成功");
   }

@@ -9,14 +9,20 @@ class QuestionCheckController extends ResourceController {
 
 //get
   @Operation.get()
-  Future<Response> getTopQuestions() async {
-    return Response.ok("getQuestions");
+Future<Response> getAllQuestions({@Bind.query('question_content') String questionId}) async {
+  final questionQuery = Query<Question>(context);
+  if (questionId != null) {
+    questionQuery.where((h) => h.questionContent).contains(questionId, caseSensitive: false);
   }
+  final questions = await questionQuery.fetch();
 
-@Operation.get('question_id')
-  Future<Response> getQuestionById(@Bind.path('question_id') int id) async {
+  return Response.ok(questions);
+}
+
+@Operation.get('questionId')
+  Future<Response> getQuestionById(@Bind.path('questionId') int id) async {
 //根据id查询一条数据
-    final query = Query<Question>(context)..where((a) => a.question_id).equalTo(id);
+    final query = Query<Question>(context)..where((a) => a.questionId).equalTo(id);
     final question = await query.fetchOne();
     if (question != null) {
       return Response.ok(question);
@@ -25,16 +31,16 @@ class QuestionCheckController extends ResourceController {
     }
   }
 
-//check
+/*check
   @Operation.put('question_id')
   Future<Response> checkQuestions() async {
     return Response.ok("checkQuestions");
-  }
+  }*/
 
 //delete
- @Operation.delete('question_id')
-  Future<Response> deleteArticleById(@Bind.path('question_id') int id) async {
-    final query = Query<Question>(context)..where((a) => a.question_id).equalTo(id);
+ @Operation.delete('questionId')
+  Future<Response> deleteArticleById(@Bind.path('questionId') int id) async {
+    final query = Query<Question>(context)..where((a) => a.questionId).equalTo(id);
 //删除一条数据
     final result = await query.delete();
     if (result != null && result == 1) {

@@ -4,11 +4,11 @@ import 'package:heroes/heroes.dart';
 class Manager extends ManagedObject<_Manager> implements _Manager {}
 class _Manager {
   @primaryKey
-  int manager_id;
+  int managerId;
 
   @Column(unique: true)
-  String manager_name;
+  String managerName;
 
   @Column(unique: true)
-  String manager_password;
+  String managerPassword;
 }
