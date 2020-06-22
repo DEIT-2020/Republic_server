@@ -9,7 +9,7 @@ class QuestionCheckController extends ResourceController {
 
 //get
   @Operation.get()
-Future<Response> getAllQuestions({@Bind.query('question_content') String questionId}) async {
+Future<Response> getAllQuestions({@Bind.query('questionContent') String questionId}) async {
   final questionQuery = Query<Question>(context);
   if (questionId != null) {
     questionQuery.where((h) => h.questionContent).contains(questionId, caseSensitive: false);
@@ -48,5 +48,13 @@ Future<Response> getAllQuestions({@Bind.query('question_content') String questio
     } else {
       return Response.ok("删除失败，数据不存在");
     }
+  }
+
+  @Operation.delete()
+  Future<Response> deleteQuestion(@Bind.body() int question) async {
+  final deletequery = Query<Question>(context)
+    ..where((q) => q.questionId).equalTo(question);
+  await deletequery.delete();
+    return Response.ok("删除成功");
   }
 }
