@@ -8,7 +8,7 @@ class QuestionAddController extends ResourceController {
   final ManagedContext context;
 //store
  @Operation.post()
-Future<Response> createHero(@Bind.body(ignore: ["question_id"]) Question inputQuestion) async {
+Future<Response> createQuestion(@Bind.body(ignore: ["questionId"]) Question inputQuestion) async {
   final query = Query<Question>(context)
     ..values = inputQuestion;
 
@@ -17,7 +17,7 @@ Future<Response> createHero(@Bind.body(ignore: ["question_id"]) Question inputQu
   return Response.ok(insertedQuestion);
 
 //check
-  @Operation.put('question_id')
+  @Operation.put('questionId')
   Future<Response> checkQuestions() async {
     return Response.ok("checkQuestions");
   }
