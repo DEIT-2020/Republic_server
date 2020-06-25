@@ -12,6 +12,7 @@ void main() {
 //取题目
 void getChineseQuestion(Event e) {
   window.alert('Confirmed!');
+  window.location.href = "/web-desktop/"; 
   // var path1= 'https://www.dartlang,org/f/portmanteaux.json';
   var path = 'http://localhost:8888/queryAllArticle';
 //var path = 'myData.json';
