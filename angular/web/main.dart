@@ -5,37 +5,22 @@ import 'package:angular_dart/app_component.template.dart' as ng;
 
 void main() {
   runApp(ng.AppComponentNgFactory);
-   var userLoginSubmit=document.querySelector("#userLoginSubmit")
-  ..onClick.listen(login); 
+  var getChinesequstion = document.querySelector("#getChinesequstion")
+    ..onClick.listen(getChineseQuestion);
 }
 
-void login(Event e){
-  //window.console.log("yes");
- // var path1= 'https://www.dartlang,org/f/portmanteaux.json';
-  var path = 'http://localhost:90';
-  var httpRequest = new HttpRequest();
-  httpRequest
-   ..open('Get', path)
-   ..onLoadEnd.listen((e) => requestComplete(httpRequest))
-   ..send('');
-
-}
-
-void requestComplete(HttpRequest request)
-{
-
-  window.console.log("yesyes");
-  if(request.status==200){
-    List<String> userAthu = 
-    json.decode(request.responseText) as List<String>;
-
-    if (userAthu =='ok')
-    { var div=document.querySelector("#unlog");
-      var id=document.querySelector("#ID");
-      div.children.clear();//移除最上面的登陆栏
-      div.appendText(id.innerHtml);
-
-    }
-
-  }
+//取题目
+void getChineseQuestion(Event e) {
+  window.alert('Confirmed!');
+  // var path1= 'https://www.dartlang,org/f/portmanteaux.json';
+  var path = 'http://localhost:8888/queryAllArticle';
+//var path = 'myData.json';
+  HttpRequest.getString(path).then((String fileContents) {
+    final jsonResult = json.decode(fileContents);
+    print(fileContents);
+    print(jsonResult[0]);
+    window.localStorage['qb'] = jsonResult;
+  }).catchError((error) {
+    print(error.toString());
+  });
 }

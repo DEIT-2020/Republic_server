@@ -14,14 +14,9 @@
 	<title>Happy Learning</title>
 
 	<link rel="stylesheet" href="css/styles.css" />
-	<link rel="stylesheet" href="css/video-js.css" />
-	<link rel="stylesheet" href="css/prettyPhoto.css" />
-	<link rel="stylesheet" href="themeChanger/css/colorpicker.css" />
-	<link rel="stylesheet" href="themeChanger/css/themeChanger.css" />
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-	crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<!-- HTML5 Shiv -->
 	<script src="js/modernizr.custom.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -55,7 +50,7 @@
 				<!--/ #kids_logo_block-->
 
 
-		
+
 
 			</div>
 			<!--/ .l-page-width-->
@@ -106,24 +101,30 @@
 									<h1 style="font-size: 30px;color:#99C0DD;padding: 20px;text-align: center;">出题</h1>
 									<form>
 										<div class="form-group"><label for="name">题干&nbsp;*</label> <input
-												class="form-control is-valid" id="setQuestion" required=""
-												type="text">
+												class="form-control is-valid" id="setQuestion" required="" type="text">
 											<div class="invalid-feedback" hidden="">ID is required</div>
 										</div>
 										<div class="form-group"><label for="alterEgo">答案&nbsp;*</label> <input
-												class="form-control" id="setAnswer"  type="text">
+												class="form-control is-valid" id="setAnswer" type="text" required="">
 										</div>
-						
+
+										<div class="form-group"><label for="questionSubject">科目&nbsp;*</label> <select
+												class="form-control is-valid" id="questionSubject" ngcontrol="power" required="">
+												<!---->
+												<option value="questionChinese">语文</option>
+												<option value="questionChem">化学</option>
+
+											</select></div>
 										<div class="row">
 											<div class="col-auto"><button class="btn btn-primary"
-													type="submit">Submit</button>
-	
-													</div>
-													<small class="col text-right">*&nbsp;Required</small>
+													type="questionSubmit">Submit</button>
+
+											</div>
+											<small class="col text-right">*&nbsp;Required</small>
 										</div>
 									</form>
 								</div>
-							
+
 							</div>
 						</hero-form> <!-- ***************** - START content - ***************** -->
 

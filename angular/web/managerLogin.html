@@ -23,7 +23,6 @@
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 	crossorigin="anonymous">
 	<!-- HTML5 Shiv -->
-	<script src="js/modernizr.custom.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
@@ -128,17 +127,17 @@
 									<h1 style="font-size: 30px;color:#99C0DD;padding: 20px;text-align: center;">登录</h1>
 									<form>
 										<div class="form-group"><label for="name">ID&nbsp;*</label> <input
-												class="form-control is-valid" id="name" ngcontrol="name" required=""
+												class="form-control is-valid" id="managerID"  required=""
 												type="text">
 											<div class="invalid-feedback" hidden="">ID is required</div>
 										</div>
 									
 										<div class="form-group"><label for="power">Password&nbsp;*</label> <input
-												class="form-control is-valid" id="power" ngcontrol="power" required="">
+												class="form-control is-valid" id="managerPassword"  required="">
 												<!---->
 											</div>
 										<div class="row">
-											<div class="col-auto"><button class="btn btn-primary"
+											<div class="col-auto"><button class="btn btn-primary" id='managerLoginSubmit'
 													type="submit">Submit</button>
 	
 													</div>
@@ -146,23 +145,7 @@
 										</div>
 									</form>
 								</div>
-								<div hidden="">
-									<h1>Hero data</h1>
-									<table class="table">
-										<tr>
-											<th>Name</th>
-											<td>Dr IQ</td>
-										</tr>
-										<tr>
-											<th>Alter Ego</th>
-											<td>Chuck Overstreet</td>
-										</tr>
-										<tr>
-											<th>Power</th>
-											<td>Really Smart</td>
-										</tr>
-									</table><button class="btn btn-primary">Edit</button>
-								</div>
+							
 							</div>
 						</hero-form> <!-- ***************** - START content - ***************** -->
 
