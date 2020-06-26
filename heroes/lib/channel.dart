@@ -1,3 +1,4 @@
+import 'controller/getChineseQuestion.dart';
 import 'heroes.dart';
 import 'controller/heroes_controller.dart';
 import 'package:aqueduct/managed_auth.dart';
@@ -65,9 +66,13 @@ class HeroesChannel extends ApplicationChannel {
         .route("/questionCheck/[:id]")
         .link(() => QuestionCheckController(context));
 
+
+
     router.route('/questionAdd').link(() => QuestionAddController(context));
 
     router.route("/login/appUser").link(() => AppUserController(context));
+
+    router.route("/getChineseQuestion").link(() => ChineseQuestionController(context));
 
     return router;
   }

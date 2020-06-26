@@ -43,6 +43,7 @@ var question =document.querySelector('#setQuestion');
 var answer=document.querySelector('#setAnswer');
 var subject=document.querySelector('#questionSubject');
   
+  
     var data = {
       'questionContent': (question as InputElement).value,
       'answer': (answer as InputElement).value,
