@@ -52,9 +52,7 @@ Controller get entryPoint {
   router
     .route('/register')
     .link(() => RegisterController(context, authServer));
-   router
-    .route('/register')
-    .link(() => RegisterController(context, authServer));
+  
 
      //login
    router

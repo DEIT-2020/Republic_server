@@ -1,17 +1,14 @@
 import 'package:heroes/heroes.dart';
 
-class appUser extends ManagedObject<_appUser> implements _appUser {}
+class AppUser extends ManagedObject<_AppUser> implements _AppUser {}
 
-class _appUser {
+class _AppUser{
   @primaryKey
   int id;
 
-  @Column(unique: true)
+  @Column(unique:true)
   String uname;
 
-  @Column(unique: true)
-  String uemail;
-
-  @Column(unique: true)
+  @Column(unique:true)
   String upassword;
 }

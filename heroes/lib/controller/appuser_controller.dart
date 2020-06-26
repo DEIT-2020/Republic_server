@@ -1,37 +1,46 @@
 import 'package:aqueduct/aqueduct.dart';
 import 'package:heroes/heroes.dart';
-import 'package:heroes/model/appUser.dart';
+import 'package:heroes/model/AppUser.dart';
+import 'package:heroes/model/AppUser.dart' as prefix0;
+import 'package:heroes/model/user.dart';
 
 class AppUserController extends ResourceController {
   AppUserController(this.context);
 
   final ManagedContext context;
 
-  @Operation.get('Uid') //按表名搜索用户id登录
-  Future<Response> getUserbyUID(@Bind.path('uid') int uid) async {
-    final userQuery = Query<appUser>(context)..where((u) => u.id).equalTo(uid);
-    final user = await userQuery.fetchOne();
-    if (user == null) {
-      return Response.notFound();
-    } else {
-      return Response.ok(user);
+@Operation.get()
+  Future<Response> getAllusers({@Bind.query('name') String name}) async {
+
+    final userQuery = Query<AppUser>(context);
+    if (name != null) {
+      userQuery.where((h) => h.id).contains(name, caseSensitive: false);
     }
+    final user = await userQuery.fetch();
 
-    @Operation.post()
-    Future<Response> userregister(@Bind.body() appUser appUserregister) async {
-      final postquery = Query<appUser>(context)..values = appUserregister;
-      final insertedUser = await postquery.insert();
-      return Response.ok(insertedUser);
-    }
+    return Response.ok(user);
+  }
+@Operation.get('id')
+  Future<Response> getUserByID(@Bind.path('id') int id) async {
+  final userQuery = Query<AppUser>(context)
+    ..where((u) => u.id).equalTo(id);    //相当于sql的SELECT id, name FROM _question WHERE id = #;语句
 
-    @Operation.put('uid')
-    Future<Response> updatepreUser(
-        @Bind.path('uid') int uid, @Bind.body() appUser user) async {
-      final query = Query<appUser>(context)
-        ..where((u) => u.id).equalTo(uid)
-        ..values = user;
+  final user = await userQuery.fetchOne();//取一个//You can also fetch an object by its primary key with the method ManagedContext.fetchObjectWithID. 
 
-      return Response.ok(await query.updateOne());
+  if (user == null) {
+    return Response.notFound();
+  }
+  else{
+    return Response.ok(user);
     }
   }
-}
+ 
+    @Operation.post()
+    Future<Response> userregister(@Bind.body() AppUser appUserregister) async {
+      final appUser = AppUser()
+        ..read(await request.body.decode(), ignore: ["id"]);
+      final query = Query<AppUser>(context)..values = appUser;
+      final insertedappUser = await query.insert();
+      return Response.ok(insertedappUser);
+    }
+  }
