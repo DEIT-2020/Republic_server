@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:aqueduct/aqueduct.dart';
 import 'package:heroes/model/user.dart';
 
-class RegisterControllerM extends ResourceController {
-  RegisterControllerM(this.context, this.authServer);
+class RegisterController extends ResourceController {
+  RegisterController(this.context, this.authServer);
 
   final ManagedContext context;
   final AuthServer authServer;

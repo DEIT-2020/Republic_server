@@ -4,8 +4,7 @@ import 'package:aqueduct/managed_auth.dart';
 import 'package:heroes/model/user.dart';
 import 'package:heroes/model/manager.dart';
 /*import 'package:heroes/model/question.dart';*/
-import 'package:heroes/controller/registeru_controller.dart';
-import 'package:heroes/controller/registerm_controller.dart';
+import 'package:heroes/controller/register_controller.dart';
 import 'package:heroes/controller/managerLogin_controller.dart';
 import 'package:heroes/controller/questionCheck_controller.dart';
 import 'package:heroes/controller/questionAdd_controller.dart';
@@ -35,8 +34,9 @@ class HeroesChannel extends ApplicationChannel {
 
     context = ManagedContext(dataModel, persistentStore);
 
-    final authStorage = ManagedAuthDelegate<User>(context);
-    authServer = AuthServer(authStorage);
+    final authStorageu = ManagedAuthDelegate<User>(context);
+    authServer = AuthServer(authStorageu);
+
   }
 
   @override
@@ -48,10 +48,8 @@ class HeroesChannel extends ApplicationChannel {
 
     router
         .route('/register/user')
-        .link(() => RegisterControllerM(context, authServer));
-    router
-        .route('/register/manager')
-        .link(() => RegisterControllerU(context, authServer));
+        .link(() => RegisterController(context, authServer));
+
 
     //login
     router.route("/login/manager").link(() => ManagerController(context));
