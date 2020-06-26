@@ -9,7 +9,6 @@ void main() {
   
   var managerLoginSubmit=document.querySelector("#managerLoginSubmit")
   ..onClick.listen(login);
-
   
 
 }
@@ -20,7 +19,7 @@ void login(Event e) async{
   
   var ID=document.querySelector("#managerID");
   var password=document.querySelector("#managerPassword");
-  
+  var submitText=document.querySelector('#managerLoginSubmit');
 
 var url = 'http://localhost:8888/';
 var response = await http.post(url, body: {'userid': (ID as InputElement).value, 'password':(password as InputElement).value});//上传参数
@@ -36,8 +35,10 @@ print('Response body: ${response.body}');
       var id=document.querySelector("#ID");
       div.children.clear();//移除最上面的登陆栏
       div.appendText(id.innerHtml);
-
+      window.open('managerHome.html', '');
     }
-
+    else{
+      window.alert("用户名或密码错误！");
   }
+ }
 }

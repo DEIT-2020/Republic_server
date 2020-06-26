@@ -23,8 +23,7 @@ var ID =document.querySelector('#ID');
 //window.alert((ID as InputElement).value);
 var password=document.querySelector('#password');
 
-
-var url = 'http://localhost:8888/';
+var url = 'http://localhost:8888/login/appUser';
 var response = await http.post(url, body: {'userid': (ID as InputElement).value, 'password':(password as InputElement).value});//上传参数
 print('Response status: ${response.statusCode}');
 print('Response body: ${response.body}');
@@ -38,8 +37,9 @@ print('Response body: ${response.body}');
       var id=document.querySelector("#ID");
       div.children.clear();//移除最上面的登陆栏
       div.appendText(id.innerHtml);
-
     }
-
+ else{
+      window.alert("用户名或密码错误！");
+    }
   }
 }
