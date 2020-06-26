@@ -14,13 +14,11 @@
 	<title>Happy Learning</title>
 
 	<link rel="stylesheet" href="css/styles.css" />
-	
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-	crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<!-- HTML5 Shiv -->
-	<script defer src="userRegister.dart.js"></script>
+	<script defer src="register.dart.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
@@ -55,11 +53,11 @@
 				<nav id="kids_main_nav">
 
 					<ul class="clearfix" style="margin-top:90px">
-						<li >
+						<li>
 							<a href="index.html">首页</a>
 
 						</li>
-						<li >
+						<li>
 							<a href="login.html">登录</a>
 
 						</li>
@@ -67,7 +65,7 @@
 							<a href="register.html">注册</a>
 
 						</li>
-						<li >
+						<li>
 							<a href="managerLogin.html">管理员入口</a>
 
 						</li>
@@ -125,31 +123,33 @@
 									<h1 style="font-size: 30px;color:#99C0DD;padding: 20px;text-align: center;">注册</h1>
 									<form>
 										<div class="form-group"><label for="name">ID&nbsp;*</label> <input
-												class="form-control is-valid" id="registerID" ngcontrol="name" required=""
-												type="text">
+												class="form-control is-valid" id="registerID" ngcontrol="name"
+												required="" type="text">
 											<div class="invalid-feedback" hidden="">ID is required</div>
 										</div>
 										<div class="form-group"><label for="alterEgo">Name</label> <input
 												class="form-control" id="NameRigister" ngcontrol="alterEgo" type="text">
 										</div>
 										<div class="form-group"><label for="power">Password&nbsp;*</label> <input
-												class="form-control is-valid" id="Password1" ngcontrol="power" required="">
-												<!---->
-											</div>
-											<div class="form-group"><label for="power">Password Again&nbsp;*</label> <input
-												class="form-control is-valid" id="Password2" ngcontrol="power" required="">
-												<!---->
-											</div>
+												class="form-control is-valid" id="Password1" ngcontrol="power"
+												required="">
+											<!---->
+										</div>
+										<div class="form-group"><label for="power">Password Again&nbsp;*</label> <input
+												class="form-control is-valid" id="Password2" ngcontrol="power"
+												required="">
+											<!---->
+										</div>
 										<div class="row">
-											<div class="col-auto"><button class="btn btn-primary"
-													type="submit">Submit</button>
-	
-													</div>
-													<small class="col text-right">*&nbsp;Required</small>
+											<div class="col-auto"></div><button class="btn btn-primary"
+													id="userRegisterSubmit" type="button">Submit</button>
+
+											</div>
+											<small class="col text-right">*&nbsp;Required</small>
 										</div>
 									</form>
 								</div>
-							
+
 							</div>
 						</hero-form> <!-- ***************** - START content - ***************** -->
 
