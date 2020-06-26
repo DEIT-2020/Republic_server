@@ -35,12 +35,5 @@ class AppUserController extends ResourceController {
     }
   }
  
-    @Operation.post()
-    Future<Response> userregister(@Bind.body() AppUser appUserregister) async {
-      final appUser = AppUser()
-        ..read(await request.body.decode(), ignore: ["id"]);
-      final query = Query<AppUser>(context)..values = appUser;
-      final insertedappUser = await query.insert();
-      return Response.ok(insertedappUser);
-    }
+    
   }
