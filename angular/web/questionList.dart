@@ -15,14 +15,18 @@ void main() {
     for (var i = 0; i < jsonResult.length; i++) {
       var li = document.createElement('li');
       //var span = document.createElement('span');
-    qlist.append(li);
-      
- li.innerHtml ='<span class="badge">'+jsonResult[i]['questionId'].toString()+'</span>'+jsonResult[i]['questionContent'] + ' ' + jsonResult[i]['answer'];
+      qlist.append(li);
+
+      li.innerHtml = '<span class="badge">' +
+          jsonResult[i]['questionId'].toString() +
+          '</span>' +
+          jsonResult[i]['questionContent'] +
+          ' ' +
+          jsonResult[i]['answer'];
       //li.append(span);
       //span.innerHtml = jsonResult[i]['questionId'].toString();
-    //  window.alert(li.innerHtml);
-     
-      
+      //  window.alert(li.innerHtml);
+
     }
 
     print(window.localStorage);
