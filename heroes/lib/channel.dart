@@ -72,7 +72,7 @@ class HeroesChannel extends ApplicationChannel {
         .linkFunction((request) async {
       return Response.ok(200);
     });
-    router.route("/login/appUser").link(() => AppUserController(context));
+/*     router.route("/login/appUser").link(() => AppUserController(context)); */
 
     router.route("/getChineseQuestion").link(() => ChineseQuestionController(context));
 
