@@ -9,7 +9,6 @@ import 'package:heroes/controller/register_controller.dart';
 import 'package:heroes/controller/managerLogin_controller.dart';
 import 'package:heroes/controller/questionCheck_controller.dart';
 import 'package:heroes/controller/questionAdd_controller.dart';
-import 'package:heroes/controller/appuser_controller.dart';
 
 /// This type initializes an application.
 ///
@@ -44,14 +43,14 @@ class HeroesChannel extends ApplicationChannel {
     final router = Router();
     router.route('/auth/token').link(() => AuthController(authServer));
 
-    router.route('/heroes/[:id]').link(() => HeroesController(context));
+    router.route("/heroes/[:id]").link(() => HeroesController(context));
 
     router
         .route('/register/user')
         .link(() => RegisterController(context, authServer));
 
     //login
-    // router.route("/login/manager").link(() => ManagerController(context));
+    router.route('/login/manager').link(() => ManagerController(context));
 
     //question
     /* router
@@ -59,8 +58,8 @@ class HeroesChannel extends ApplicationChannel {
     .link(() => QuestionCheckController(context));*/
 
     router
-        .route("/questionCheck/[:id]")
-        .link(() => Authorizer.bearer(authServer))
+        .route("/questionCheck/[:questionId]")
+        //.link(() => Authorizer.bearer(authServer))
         .link(() => QuestionCheckController(context));
 
     router
@@ -72,7 +71,7 @@ class HeroesChannel extends ApplicationChannel {
         .linkFunction((request) async {
       return Response.ok(200);
     });
-    router.route("/login/appUser").link(() => AppUserController(context));
+    /*router.route("/login/appUser").link(() => AppUserController(context));*/
 
     router.route("/getChineseQuestion").link(() => ChineseQuestionController(context));
 
