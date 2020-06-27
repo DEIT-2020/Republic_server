@@ -51,7 +51,7 @@ class HeroesChannel extends ApplicationChannel {
         .link(() => RegisterController(context, authServer));
 
     //login
-    // router.route("/login/manager").link(() => ManagerController(context));
+  //   router.route("/login/manager").link(() => ManagerController(context));
 
     //question
     /* router
@@ -60,7 +60,7 @@ class HeroesChannel extends ApplicationChannel {
 
     router
         .route("/questionCheck/[:id]")
-        .link(() => Authorizer.bearer(authServer))
+        //.link(() => Authorizer.bearer(authServer))
         .link(() => QuestionCheckController(context));
 
     router

@@ -7,7 +7,7 @@
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    width: 50em;
   }
   
   .heroes li {
@@ -17,7 +17,7 @@
     background-color: #EEE;
     margin: .5em;
     padding: .3em 0;
-    height: 1.6em;
+    height: 2.5em;
     border-radius: 4px;
   }
   
@@ -46,7 +46,7 @@
     position: relative;
     left: -1px;
     top: -4px;
-    height: 1.8em;
+    height: 3em;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
