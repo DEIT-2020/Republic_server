@@ -19,14 +19,17 @@ void login(Event e) async{
  // var path1= 'https://www.dartlang,org/f/portmanteaux.json';
 
   
-var ID =document.querySelector('#ID');
+var id =document.querySelector('#ID');
 //window.alert((ID as InputElement).value);
 var password=document.querySelector('#password');
+var data = {
+      'id': (id as InputElement).value,
+      'upassword': (password as InputElement).value,
+    };
 
-var url = 'http://localhost:8888/login/appUser';
-var response = await http.post(url, body: {'userid': (ID as InputElement).value, 'password':(password as InputElement).value});//上传参数
-print('Response status: ${response.statusCode}');
-print('Response body: ${response.body}');
+ final response = await http.post('http://127.0.0.1:8888/login/appUser',
+        body: json.encode(data),
+        headers: {"content-type": "application/json"}).then((response) {
 
  if(response.statusCode==200){
     List<String> userAthu = 
@@ -41,5 +44,6 @@ print('Response body: ${response.body}');
  else{
       window.alert("用户名或密码错误！");
     }
-  }
-}
+  }});
+        }
+

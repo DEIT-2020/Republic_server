@@ -20,16 +20,15 @@ Future<Response> getAllQuestions({@Bind.query('questionContent') String question
 }
 
 @Operation.get('questionId')
-  Future<Response> getQuestionById(@Bind.path('questionId') int id) async {
+  Future<Response> getQuestionById(@Bind.path('questionId') int questionid) async {
 //根据id查询一条数据
-    final query = Query<Question>(context)..where((a) => a.questionId).equalTo(id);
+    final query = Query<Question>(context)..where((h) => h.questionId).equalTo(questionid);
     final question = await query.fetchOne();
-    if (question != null) {
-      return Response.ok(question);
-    } else {
-      return Response.notFound();
-    }
+     if (question == null) {
+    return Response.notFound();
   }
+  return Response.ok(question);
+}
 
 /*check
   @Operation.put('question_id')
