@@ -9,12 +9,12 @@ class AppUserController extends ResourceController {
 
   final ManagedContext context;
 
-  @Operation.post()
+ /*@Operation.post()
   Future<Response> checkuserid(
       @Bind.body User checkuser) async {
     final query = Query<Question>(context)..values = inputQuestion;
 
     final insertedQuestion = await query.insert();
 
-    return Response.ok(insertedQuestion);}
+    return Response.ok(insertedQuestion);}*/
 }
