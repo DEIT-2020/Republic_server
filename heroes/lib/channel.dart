@@ -1,3 +1,4 @@
+import 'controller/getChineseQuestion.dart';
 import 'heroes.dart';
 import 'controller/heroes_controller.dart';
 import 'package:aqueduct/managed_auth.dart';
@@ -62,17 +63,23 @@ class HeroesChannel extends ApplicationChannel {
         .link(() => Authorizer.bearer(authServer))
         .link(() => QuestionCheckController(context));
 
-    router
-        .route('/questionAdd')
-        .link(() => Authorizer.bearer(authServer))
-        .link(() => QuestionAddController(context));
+    router.route('/questionAdd').link(() => QuestionAddController(context));
     router
         .route("/home/game")
         .link(() => Authorizer.bearer(authServer))
         .linkFunction((request) async {
       return Response.ok(200);
     });
-    router.route("/login/appUser").link(() => AppUserController(context));
+    router
+        .route("/login/appUser")
+        .link(() => Authorizer.bearer(authServer))
+        .linkFunction((request) async {
+      return Response.ok(200);
+    });
+
+    router
+        .route("/getChineseQuestion")
+        .link(() => ChineseQuestionController(context));
 
     return router;
   }

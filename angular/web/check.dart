@@ -7,27 +7,37 @@ import 'package:http/http.dart' as http;
 void main() {
   runApp(ng.AppComponentNgFactory);
   var getChinesequstion=document.querySelector("#questionSubmit")
-  ..onClick.listen(addQuestion);  
+  ..onClick.listen(checkQuestion);  
 
 }
 
 
 
 
-void addQuestion(Event e) async{
+void checkQuestion(Event e) async{
   //window.console.log("yes");
  // var path1= 'https://www.dartlang,org/f/portmanteaux.json';
 
   
-var question =document.querySelector('#setQuestion');
+var question =document.querySelector('#QuestionId');
 //window.alert((ID as InputElement).value);
-var answer=document.querySelector('#setAnswer');
+var subject=document.querySelector('#QuestionSubject');
+var ifC=document.querySelector('#ifChecked');
+
+var data = {
+      'questionId': (question as InputElement).value,
+      'checkby': (ifC as InputElement).value,
+    };
 
 
-var url = 'http://localhost:8888/';
-var response = await http.post(url, body: {'question': (question as InputElement).value, 'answer':(answer as InputElement).value});//上传参数
-print('Response status: ${response.statusCode}');
-print('Response body: ${response.body}');
-
+final response = await http.post('http://127.0.0.1:8888//questionCheck/[:id]',
+        body: json.encode(data),
+        headers: {"content-type": "application/json"}).then((response) {
+      
+      if (response.statusCode == 200) {
+      window.alert("搜索成功");
+      }else window.alert("搜索失败！");
+   
+    });
  
 }
