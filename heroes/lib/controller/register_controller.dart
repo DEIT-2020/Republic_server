@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:aqueduct/aqueduct.dart';
 import 'package:heroes/model/user.dart';
 
-class RegisterControllerM extends ResourceController {
-  RegisterControllerM(this.context, this.authServer);
+class RegisterController extends ResourceController {
+  RegisterController(this.context, this.authServer);
 
   final ManagedContext context;
   final AuthServer authServer;
@@ -14,7 +14,7 @@ class RegisterControllerM extends ResourceController {
     // Check for required parameters before we spend time hashing
     if (user.username == null || user.password == null) {
       return Response.badRequest(
-        body: {"error": "username and password required."});
+          body: {"error": "username and password required."});
     }
 
     user
