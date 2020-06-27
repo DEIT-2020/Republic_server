@@ -101,29 +101,36 @@
 					</div>
 
 					<div id="sbr" class="entry-container">
-                      <material-select-demo>
-						<material-select focusList width="2" class="bordered-list">
-  
-							<material-select-item (trigger)="proto = 'ftp'"
-						
-												  focusItem
-						
-												  [selected]="proto == 'ftp'">用户管理</material-select-item>
-						
-							<material-select-item (trigger)="proto = 'http'"
-						
-												  focusItem
-						
-												  [selected]="proto == 'http'">题目管理</material-select-item>
-						
-							<material-select-item (trigger)="proto = 'https'"
-						
-												  focusItem
-						
-												  [selected]="proto == 'https'">管理员设置</material-select-item>
-						
-						  </material-select>
-						</material-select-demo>
+
+						<hero-form>
+							<div class="container" style="height: 400px;width: 600px;">
+								<div>
+									<h1 style="font-size: 30px;color:#99C0DD;padding: 20px;text-align: center;">查询</h1>
+									<form>
+										<div class="form-group"><label for="questionId">id</label> <input
+												class="form-control is-valid" id="QuestionId"  type="text">
+											
+										</div>
+
+										<div class="form-group"><label for="ifC">是否被检阅;</label> <select
+												class="form-control is-valid" id="ifChecked" ngcontrol="power" >
+												<!---->
+												<option value="true">是</option>
+												<option value="null">否</option>
+
+											</select></div>
+										<div class="row">
+											<div class="col-auto"><button class="btn btn-primary"
+													id="questionCheck" type="button">Submit</button>
+
+											</div>
+		
+										</div>
+									</form>
+								</div>
+
+							</div>
+						</hero-form> <!-- ***************** - START content - ***************** -->
 
 
 

@@ -5,8 +5,7 @@ import 'package:aqueduct/managed_auth.dart';
 import 'package:heroes/model/user.dart';
 import 'package:heroes/model/manager.dart';
 /*import 'package:heroes/model/question.dart';*/
-import 'package:heroes/controller/registeru_controller.dart';
-import 'package:heroes/controller/registerm_controller.dart';
+import 'package:heroes/controller/register_controller.dart';
 import 'package:heroes/controller/managerLogin_controller.dart';
 import 'package:heroes/controller/questionCheck_controller.dart';
 import 'package:heroes/controller/questionAdd_controller.dart';
@@ -36,8 +35,8 @@ class HeroesChannel extends ApplicationChannel {
 
     context = ManagedContext(dataModel, persistentStore);
 
-    final authStorage = ManagedAuthDelegate<User>(context);
-    authServer = AuthServer(authStorage);
+    final authStorageu = ManagedAuthDelegate<User>(context, tokenLimit: 20);
+    authServer = AuthServer(authStorageu);
   }
 
   @override
@@ -49,13 +48,10 @@ class HeroesChannel extends ApplicationChannel {
 
     router
         .route('/register/user')
-        .link(() => RegisterControllerM(context, authServer));
-    router
-        .route('/register/manager')
-        .link(() => RegisterControllerU(context, authServer));
+        .link(() => RegisterController(context, authServer));
 
     //login
-    router.route("/login/manager").link(() => ManagerController(context));
+  //   router.route("/login/manager").link(() => ManagerController(context));
 
     //question
     /* router
@@ -64,13 +60,19 @@ class HeroesChannel extends ApplicationChannel {
 
     router
         .route("/questionCheck/[:id]")
+        //.link(() => Authorizer.bearer(authServer))
         .link(() => QuestionCheckController(context));
 
-
-
-    router.route('/questionAdd').link(() => QuestionAddController(context));
-
-    router.route("/login/appUser").link(() => AppUserController(context));
+    router
+        .route('/questionAdd')
+        .link(() => QuestionAddController(context));
+    router
+        .route("/home/game")
+        .link(() => Authorizer.bearer(authServer))
+        .linkFunction((request) async {
+      return Response.ok(200);
+    });
+/*     router.route("/login/appUser").link(() => AppUserController(context)); */
 
     router.route("/getChineseQuestion").link(() => ChineseQuestionController(context));
 

@@ -8,8 +8,22 @@ class ManagerController extends ResourceController {
 
   final ManagedContext context;
 
-  @Operation.get('managerId')
-  Future<Response> getUser() async {
-    return Response.ok("登陆成功");
-  }
-}
+  @Operation.post()
+  Future<Response> checkmanager(
+      @Bind.body(ignore: ["managerId"]) Manager inputManager,
+      @Bind.path('managerId') int managerId) async {
+    final inputQuery = Query<Manager>(context)..values = inputManager;
+   final outputQuery = Query<Manager>(context)
+    ..where((h) => h.managerId).equalTo(managerId);    
+
+  final manager = await outputQuery.fetchOne();
+if (inputManager.managerId == manager.managerId &&
+inputManager.managerPassword == manager.managerPassword)
+    {
+      return Response.ok(manager);
+    }
+    else {
+      return Response.notFound();
+    }
+      }
+      }
