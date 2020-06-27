@@ -9,31 +9,12 @@ class AppUserController extends ResourceController {
 
   final ManagedContext context;
 
-@Operation.get()
-  Future<Response> getAllusers({@Bind.query('name') String name}) async {
+  @Operation.post()
+  Future<Response> checkuserid(
+      @Bind.body User checkuser) async {
+    final query = Query<Question>(context)..values = inputQuestion;
 
-    final userQuery = Query<AppUser>(context);
-    if (name != null) {
-      userQuery.where((h) => h.id).contains(name, caseSensitive: false);
-    }
-    final user = await userQuery.fetch();
+    final insertedQuestion = await query.insert();
 
-    return Response.ok(user);
-  }
-@Operation.get('id')
-  Future<Response> getUserByID(@Bind.path('id') int id) async {
-  final userQuery = Query<AppUser>(context)
-    ..where((u) => u.id).equalTo(id);    //相当于sql的SELECT id, name FROM _question WHERE id = #;语句
-
-  final user = await userQuery.fetchOne();//取一个//You can also fetch an object by its primary key with the method ManagedContext.fetchObjectWithID. 
-
-  if (user == null) {
-    return Response.notFound();
-  }
-  else{
-    return Response.ok(user);
-    }
-  }
- 
-    
-  }
+    return Response.ok(insertedQuestion);}
+}

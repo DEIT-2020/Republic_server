@@ -34,9 +34,8 @@ class HeroesChannel extends ApplicationChannel {
 
     context = ManagedContext(dataModel, persistentStore);
 
-    final authStorageu = ManagedAuthDelegate<User>(context);
+    final authStorageu = ManagedAuthDelegate<User>(context, tokenLimit: 20);
     authServer = AuthServer(authStorageu);
-
   }
 
   @override
@@ -50,9 +49,8 @@ class HeroesChannel extends ApplicationChannel {
         .route('/register/user')
         .link(() => RegisterController(context, authServer));
 
-
     //login
-    router.route("/login/manager").link(() => ManagerController(context));
+    // router.route("/login/manager").link(() => ManagerController(context));
 
     //question
     /* router
@@ -61,10 +59,19 @@ class HeroesChannel extends ApplicationChannel {
 
     router
         .route("/questionCheck/[:id]")
+        .link(() => Authorizer.bearer(authServer))
         .link(() => QuestionCheckController(context));
 
-    router.route('/questionAdd').link(() => QuestionAddController(context));
-
+    router
+        .route('/questionAdd')
+        .link(() => Authorizer.bearer(authServer))
+        .link(() => QuestionAddController(context));
+    router
+        .route("/home/game")
+        .link(() => Authorizer.bearer(authServer))
+        .linkFunction((request) async {
+      return Response.ok(200);
+    });
     router.route("/login/appUser").link(() => AppUserController(context));
 
     return router;

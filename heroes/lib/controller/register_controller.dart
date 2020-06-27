@@ -14,7 +14,7 @@ class RegisterController extends ResourceController {
     // Check for required parameters before we spend time hashing
     if (user.username == null || user.password == null) {
       return Response.badRequest(
-        body: {"error": "username and password required."});
+          body: {"error": "username and password required."});
     }
 
     user

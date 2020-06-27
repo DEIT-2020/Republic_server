@@ -7,19 +7,19 @@ class QuestionAddController extends ResourceController {
 
   final ManagedContext context;
 //store
- @Operation.post()
-Future<Response> createQuestion(@Bind.body(ignore: ["questionId"]) Question inputQuestion) async {
-  final query = Query<Question>(context)
-    ..values = inputQuestion;
+  @Operation.post()
+  Future<Response> createQuestion(
+      @Bind.body(ignore: ["questionId"]) Question inputQuestion) async {
+    final query = Query<Question>(context)..values = inputQuestion;
 
-  final insertedQuestion = await query.insert();
+    final insertedQuestion = await query.insert();
 
-  return Response.ok(insertedQuestion);
+    return Response.ok(insertedQuestion);
 
 //check
-  @Operation.put('questionId')
-  Future<Response> checkQuestions() async {
-    return Response.ok("checkQuestions");
+    @Operation.put('questionId')
+    Future<Response> checkQuestions() async {
+      return Response.ok("checkQuestions");
+    }
   }
-}
 }
