@@ -25,12 +25,11 @@ class ManagerController extends ResourceController {
       msg = "管理员不存在";
     } else {
       //通过auth/token获取token。登录成功的话，返回token
-      var clientId = "com.donggua.chat";
-      var clientSecret = "dongguasecret";
+      var clientId = "hqr";
       var body =
           "managerName=${manager.managerId}&password=${manager.managerPassword}&grant_type=password";
       var clientCredentials =
-          Base64Encoder().convert("$clientId:$clientSecret".codeUnits);
+          Base64Encoder().convert("$clientId".codeUnits);
 
       res.Response response =
           await http.post('http://localhost:8888/auth/token',

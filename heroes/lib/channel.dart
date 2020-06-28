@@ -4,7 +4,7 @@ import 'controller/heroes_controller.dart';
 import 'package:aqueduct/managed_auth.dart';
 import 'package:heroes/model/user.dart';
 import 'package:heroes/model/manager.dart';
-/*import 'package:heroes/model/question.dart';*/
+import 'package:heroes/model/question.dart';
 import 'package:heroes/controller/register_controller.dart';
 import 'package:heroes/controller/managerLogin_controller.dart';
 import 'package:heroes/controller/questionCheck_controller.dart';
@@ -50,7 +50,8 @@ class HeroesChannel extends ApplicationChannel {
         .link(() => RegisterController(context, authServer));
 
     //login
-    router.route('/login/manager').link(() => ManagerController(context));
+    router.route('/login/manager').link(() => ManagerController(context))
+    .link(() => Authorizer.bearer(authServer));
 
     //question
     /* router
