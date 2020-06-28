@@ -22,13 +22,13 @@ class ManagerController extends ResourceController {
     Manager result = await query.fetchOne();
 
     if (result == null) {
-      msg = "用户不存在";
+      msg = "管理员不存在";
     } else {
       //通过auth/token获取token。登录成功的话，返回token
       var clientId = "com.donggua.chat";
       var clientSecret = "dongguasecret";
       var body =
-          "managerName=${manager.managerName}&password=${manager.managerPassword}&grant_type=password";
+          "managerName=${manager.managerId}&password=${manager.managerPassword}&grant_type=password";
       var clientCredentials =
           Base64Encoder().convert("$clientId:$clientSecret".codeUnits);
 

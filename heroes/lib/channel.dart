@@ -50,11 +50,7 @@ class HeroesChannel extends ApplicationChannel {
         .link(() => RegisterController(context, authServer));
 
     //login
-<<<<<<< HEAD
     router.route('/login/manager').link(() => ManagerController(context));
-=======
-  //   router.route("/login/manager").link(() => ManagerController(context));
->>>>>>> 3283edb6eaa6357aa0972a5cf71b93f3e9c7eb1a
 
     //question
     /* router
@@ -62,11 +58,7 @@ class HeroesChannel extends ApplicationChannel {
     .link(() => QuestionCheckController(context));*/
 
     router
-<<<<<<< HEAD
         .route("/questionCheck/[:questionId]")
-=======
-        .route("/questionCheck/[:id]")
->>>>>>> 3283edb6eaa6357aa0972a5cf71b93f3e9c7eb1a
         //.link(() => Authorizer.bearer(authServer))
         .link(() => QuestionCheckController(context));
 
@@ -79,11 +71,7 @@ class HeroesChannel extends ApplicationChannel {
         .linkFunction((request) async {
       return Response.ok(200);
     });
-<<<<<<< HEAD
     /*router.route("/login/appUser").link(() => AppUserController(context));*/
-=======
-/*     router.route("/login/appUser").link(() => AppUserController(context)); */
->>>>>>> 3283edb6eaa6357aa0972a5cf71b93f3e9c7eb1a
 
     router.route("/getChineseQuestion").link(() => ChineseQuestionController(context));
 
