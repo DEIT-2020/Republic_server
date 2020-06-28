@@ -130,6 +130,21 @@
 
   </div><!-- .end_content -->
 
+  <script>
+
+    var qlist = document.getElementById("qlist");
+    qlist.onclick = function (ev) {
+
+      var ev = ev || window.event;
+      var target = ev.target || ev.srcElement;
+      if (target.nodeName.toLocaleLowerCase() == 'li') {
+        alert("添加成功！");
+        target.remove();
+      }
+
+    }
+  </script>
+
 </body>
 
 </html>

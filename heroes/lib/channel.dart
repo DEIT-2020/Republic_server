@@ -60,6 +60,7 @@ class HeroesChannel extends ApplicationChannel {
 
     router
         .route("/questionCheck/[:id]")
+               // .link(() => Authorizer.bearer(authServer))
         //.link(() => Authorizer.bearer(authServer))
         .link(() => QuestionCheckController(context));
 
@@ -68,7 +69,7 @@ class HeroesChannel extends ApplicationChannel {
         .link(() => QuestionAddController(context));
     router
         .route("/home/game")
-        .link(() => Authorizer.bearer(authServer))
+        //.link(() => Authorizer.bearer(authServer))
         .linkFunction((request) async {
       return Response.ok(200);
     });
