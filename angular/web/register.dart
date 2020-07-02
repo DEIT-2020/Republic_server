@@ -36,7 +36,7 @@ void register(Event e) async {
           print('response: ${resp.responseText}');
        });*/
  //window.alert("注册成功");
-    final response = await http.post('http://127.0.0.1:8888/register',
+    final response = await http.post('http://127.0.0.1:8888/register/user',
         body: json.encode(data),
         headers: {"content-type": "application/json"}).then((response) {
       

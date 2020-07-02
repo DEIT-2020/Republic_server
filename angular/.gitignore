@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See https://www.dartlang.org/guides/libraries/private-files
 
 # Files and directories created by pub
@@ -20,16 +19,3 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
-=======
-# Files and directories created by pub
-.dart_tool/
-.packages
-# Remove the following pattern if you wish to check in your lock file
-pubspec.lock
-
-# Conventional directory for build outputs
-build/
-
-# Directory created by dartdoc
-doc/api/
->>>>>>> frontEnd
